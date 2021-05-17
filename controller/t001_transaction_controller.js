@@ -71,6 +71,32 @@ const Registro_controller ={
       }
     }
 ,    
+RegistrosGetId: async ( req, res) =>{
+
+  try {
+
+    const { id } = req.params;
+
+    const response = await t001_transaction.findAll({
+      where: { NU_ID:id }
+      
+    })
+    .then( function(data){
+      const res = {  data }
+      return res;
+    })
+    .catch(error => {
+      const res = { success: false, error: error }
+      return res;
+    })
+    res.json(response);
+
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+,
    
     RegistrosDelete:async ( req, res) =>{
 
